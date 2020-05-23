@@ -17,7 +17,7 @@ app.post('/', function (req, res) {
   //console.log(req.body.city);
 
   let city = req.body.city;
-  let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+  let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
   request(url, function (err, response, body) {
     let weather = JSON.parse(body)
     if(err){
@@ -28,7 +28,7 @@ app.post('/', function (req, res) {
       if(weather.main == undefined){
         res.render('index', {weather: null, error: 'Error, please try again'});
       } else {
-        let weatherText = `It's ${weather.main.temp} degrees Fahrenheit in ${weather.name}!`;
+        let weatherText = `It's ${weather.main.temp} degrees Celcius in ${weather.name}!`;
         res.render('index', {weather: weatherText, error: null});
       }
     }
