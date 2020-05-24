@@ -26,7 +26,7 @@ app.post('/', function (req, res) {
       
       console.log(weather);
       if(weather.main == undefined){
-        res.render('index', {weather: null, error: 'Error, please try again'});
+        res.render('index', {weather: null, error: 'Error, City Not found, Please try again'});
       } else {
         let weatherText = `It's ${weather.main.temp} degrees Celcius in ${weather.name}!`;
         res.render('index', {weather: weatherText, error: null});
